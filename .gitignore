@@ -103,3 +103,5 @@ REVISION
 /mpc*
 /gmp*
 /isl*
+.vscode/ipch/e8a4945c8ee136ca/mmap_address.bin
+.vscode/ipch/e8a4945c8ee136ca/dominion.ipch
