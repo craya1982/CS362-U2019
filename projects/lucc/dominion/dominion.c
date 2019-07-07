@@ -1220,12 +1220,7 @@ int ambassadorCard(int amountOfCardsToDiscard, int cardToDiscardPosition, int cu
 {
   int j, i = 0; //used to check if player has enough cards to discard
 
-  if (amountOfCardsToDiscard > 2 || amountOfCardsToDiscard < 0)
-  {
-    return -1;
-  }
-
-  if (cardToDiscardPosition == handPos)
+  if (amountOfCardsToDiscard > 2 || amountOfCardsToDiscard < 0 || cardToDiscardPosition == handPos)
   {
     return -1;
   }
@@ -1304,7 +1299,6 @@ int tributeCard(struct gameState *state, int nextPlayer, int currentPlayer)
       }
     }
   }
-
   else
   {
     if (state->deckCount[nextPlayer] == 0)
@@ -1363,17 +1357,7 @@ int mineCard(int currentPlayer, struct gameState *state, int cardToTrash, int se
   int i = 0;
   int j = state->hand[currentPlayer][cardToTrash]; //store card we will trash
 
-  if (state->hand[currentPlayer][cardToTrash] < copper || state->hand[currentPlayer][cardToTrash] > gold)
-  {
-    return -1;
-  }
-
-  if (selectedTreasure > treasure_map || selectedTreasure < curse)
-  {
-    return -1;
-  }
-
-  if ((getCost(state->hand[currentPlayer][cardToTrash]) + 3) > getCost(selectedTreasure))
+  if (state->hand[currentPlayer][cardToTrash] < copper || state->hand[currentPlayer][cardToTrash] > gold || selectedTreasure > treasure_map || selectedTreasure < curse || (getCost(state->hand[currentPlayer][cardToTrash]) + 3) > getCost(selectedTreasure))
   {
     return -1;
   }
