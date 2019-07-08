@@ -1179,7 +1179,7 @@ int minionCard(int handPos, int currentPlayer, int chooseCoinsFlag, struct gameS
     //discard hand
     while (numHandCards(state) > 0)
     {
-      discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 1);
     }
 
     //draw 4
@@ -1196,7 +1196,7 @@ int minionCard(int handPos, int currentPlayer, int chooseCoinsFlag, struct gameS
         if (state->handCount[i] > 4)
         {
           //discard hand
-          while (state->handCount[i] > 0)
+          while (state->handCount[i] > 1)
           {
             discardCard(handPos, i, state, 0);
           }
