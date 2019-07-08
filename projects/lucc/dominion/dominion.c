@@ -1202,7 +1202,7 @@ int minionCard(int handPos, int currentPlayer, int chooseCoinsFlag, struct gameS
           }
 
           //draw 4
-          for (j = 0; j < 4; j++)
+          for (j = 0; j < 3; j++)
           {
             drawCard(i, state);
           }
