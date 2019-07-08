@@ -1242,7 +1242,7 @@ int ambassadorCard(int amountOfCardsToDiscard, int cardToDiscardPosition, int cu
 
   //increase supply count for choosen card by amount being discarded
   state->supplyCount[state->hand[currentPlayer][cardToDiscardPosition]] += amountOfCardsToDiscard;
-
+  state->playedCardCount += 1;
   //each other player gains a copy of revealed card
   for (i = 0; i < state->numPlayers; i++)
   {
@@ -1253,7 +1253,7 @@ int ambassadorCard(int amountOfCardsToDiscard, int cardToDiscardPosition, int cu
   }
 
   //discard played card from hand
-  discardCard(handPos, currentPlayer, state, 0);
+  discardCard(handPos, currentPlayer, state, 1);
 
   //trash copies of cards returned to supply
   for (j = 0; j < amountOfCardsToDiscard; j++)
@@ -1315,7 +1315,6 @@ int tributeCard(struct gameState *state, int nextPlayer, int currentPlayer)
     }
     tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer] - 1];
     state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
-    state->deckCount[nextPlayer]--;
     tributeRevealedCards[1] = state->deck[nextPlayer][state->deckCount[nextPlayer] - 1];
     state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
     state->deckCount[nextPlayer]--;
@@ -1339,6 +1338,7 @@ int tributeCard(struct gameState *state, int nextPlayer, int currentPlayer)
     { //Victory Card Found
       drawCard(currentPlayer, state);
       drawCard(currentPlayer, state);
+      drawCard(nextPlayer, state);
     }
     else
     { //Action Card
@@ -1355,7 +1355,7 @@ int tributeCard(struct gameState *state, int nextPlayer, int currentPlayer)
 int mineCard(int currentPlayer, struct gameState *state, int cardToTrash, int selectedTreasure, int handPos)
 {
   int i = 0;
-  int j = state->hand[currentPlayer][cardToTrash]; //store card we will trash
+  int j = 0;
 
   if (state->hand[currentPlayer][cardToTrash] < copper || state->hand[currentPlayer][cardToTrash] > gold || selectedTreasure > treasure_map || selectedTreasure < curse || (getCost(state->hand[currentPlayer][cardToTrash]) + 3) > getCost(selectedTreasure))
   {
@@ -1373,7 +1373,6 @@ int mineCard(int currentPlayer, struct gameState *state, int cardToTrash, int se
     if (state->hand[currentPlayer][i] == j)
     {
       discardCard(i, currentPlayer, state, 0);
-      break;
     }
   }
 
