@@ -1096,7 +1096,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 int baronCard(struct gameState *state, int discardEstateFlag, int currentPlayer)
 {
   state->numBuys++; //Increase buys by 1!
-  if (discardEstateFlag > 0)
+  if (discardEstateFlag < 0)
   {                             //Boolean true or going to discard an estate
     int p = 0;                  //Iterator for hand!
     int card_not_discarded = 1; //Flag for discard set!
@@ -1113,6 +1113,7 @@ int baronCard(struct gameState *state, int discardEstateFlag, int currentPlayer)
         }
         state->hand[currentPlayer][state->handCount[currentPlayer]] = -1;
         state->handCount[currentPlayer]--;
+        state->handCount[currentPlayer + 1]--;
         card_not_discarded = 0; //Exit the loop
       }
       else if (p > state->handCount[currentPlayer])
@@ -1126,7 +1127,6 @@ int baronCard(struct gameState *state, int discardEstateFlag, int currentPlayer)
         handleBaronGainEstate(state, currentPlayer);
         card_not_discarded = 0; //Exit the loop
       }
-
       else
       {
         p++; //Next card
