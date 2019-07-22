@@ -135,20 +135,20 @@ int main() {
 
     baronCard(&G, 1, 0);
 #if (NOISY_TEST == 1)
-    printf("Expected supply count value: 0\n");
+    printf("Expected supply count value: 1\n");
 #endif
-    assert(G.supplyCount[estate] == 0);
+    assert(G.supplyCount[estate] == 1);
 #if (NOISY_TEST == 1)
-    printf("Expected hand count value: 1\n");
+    printf("Expected hand count value: 0\n");
 #endif
-    assert(G.handCount[0] == 1);
+    assert(G.handCount[0] == 0);
 #if (NOISY_TEST == 1)
     printf("Expected numBuys: 1\n");
 #endif
     assert(G.numBuys == 1);
 
 
-
+//Test 6
 #if (NOISY_TEST == 1)
     printf("Test estate card present when flag set to true\n");
 #endif
@@ -168,7 +168,7 @@ int main() {
 #endif
     assert(G.supplyCount[estate] == 0);
 #if (NOISY_TEST == 1)
-    printf("Expected hand count value: 1\n");
+    printf("Expected hand count value: 0\n");
 #endif
     assert(G.handCount[0] == 0);
 #if (NOISY_TEST == 1)
