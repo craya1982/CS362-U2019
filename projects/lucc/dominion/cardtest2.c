@@ -31,7 +31,9 @@ int main() {
         printf("\n\nTesting shuffle!\n");
     }
 
-
+    if (NOISY_TEST) {
+        printf("Cards shuffled and at least two items don't match original position ");
+    }
     r = initializeGame(numPlayer, k, seed, &G);
     G.deck[0][0] = estate;
     G.deck[0][1] = baron;

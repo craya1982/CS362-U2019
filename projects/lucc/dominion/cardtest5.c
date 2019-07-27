@@ -28,7 +28,7 @@ int main() {
 
 
     if (NOISY_TEST) {
-        printf("\n\nTesting get winners!\n");
+        printf("\n\nTesting draw card!\n");
     }
 
 
