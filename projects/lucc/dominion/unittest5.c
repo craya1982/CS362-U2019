@@ -30,7 +30,43 @@ int main() {
  * TESTING MINE
  */
 
-    printf("All tests passed!\n");
+    if (NOISY_TEST) {
+        printf("\n\nTesting Mine Card!\n");
+    }
+
+    if (NOISY_TEST) {
+        printf("Testing Invalid Cards return -1\n");
+    }
+
+    r = initializeGame(numPlayer, k, seed, &G);
+    G.numActions = 0;
+    G.hand[0][0] = province;
+    G.hand[0][1] = adventurer;
+    G.hand[0][2] = mine;
+    G.handCount[0] = 3;
+    G.playedCardCount = 0;
+    assert(mineCard(0, &G, 0, treasure_map, 2) == -1);
+    assert(mineCard(0, &G, 1, treasure_map, 2) == -1);
+
+    G.hand[0][0] = copper;
+
+    assert(mineCard(0, &G, 0, estate, 2) == -1);
+    assert(mineCard(0, &G, 1, -1, 2) == -1);
+
+    if (NOISY_TEST) {
+        printf("Testing gain treasure map\n");
+    }
+    r = initializeGame(numPlayer, k, seed, &G);
+    G.numActions = 0;
+    G.hand[0][0] = copper;
+    G.hand[0][1] = adventurer;
+    G.hand[0][2] = mine;
+    G.handCount[0] = 3;
+    G.playedCardCount = 0;
+
+    mineCard(0, &G, 0, treasure_map, 2);
+
+    assert(G.hand[0][1] == treasure_map);
 
     return 0;
 }

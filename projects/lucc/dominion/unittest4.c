@@ -30,7 +30,17 @@ int main() {
  * TESTING TRIBUTE
  */
 
-    printf("All tests passed!\n");
+    //Test player has 1 card
+
+    //Test player
+    r = initializeGame(numPlayer, k, seed, &G);
+    G.numActions = 0;
+    G.hand[0][0] = estate;
+    G.hand[0][1] = estate;
+    G.hand[0][2] = ambassador;
+    G.handCount[0] = 3;
+    G.playedCardCount = 0;
+    ambassadorCard(2, 0, 0, 2, &G); 
 
     return 0;
 }

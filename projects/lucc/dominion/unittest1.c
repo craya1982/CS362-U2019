@@ -96,7 +96,7 @@ int main() {
  */
 // TEST 4
 #if (NOISY_TEST == 1)   
-    printf("Test baron method\n");
+    printf("\n\nTest baron method\n");
 #endif
 #if (NOISY_TEST == 1)
     printf("Test discardEstateFlag set to false\n");

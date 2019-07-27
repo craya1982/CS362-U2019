@@ -30,8 +30,9 @@ int main() {
  * TESTING MINION
  */
 
-    printf("All tests passed!\n");
-
+    if (NOISY_TEST) {
+        printf("\n\nTesting Minion\n");
+    }
     //test cases
     //test incremented numActions with various combinations
     if (NOISY_TEST) {
@@ -68,7 +69,7 @@ int main() {
     assert(G.numActions == 1);
     //test position discarded from hand
     if (NOISY_TEST) {
-        printf("Testing discarding card\n");
+        printf("Testing discarding card from provided position\n");
     }
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
@@ -81,6 +82,9 @@ int main() {
 
 
     //test choosecoinsflag and that hand was not discard
+    if (NOISY_TEST) {
+        printf("Testing coins chosen no extra cards discarded\n");
+    }
    r = initializeGame(numPlayer, k, seed, &G);
 
     G.hand[0][0] = minion;
@@ -97,6 +101,9 @@ int main() {
 
     //test hand was discarded and coins not incremented and players had hands redrawn
     //less than 4 cards for player 2
+    if (NOISY_TEST) {
+        printf("Testing discard user cards, 2nd player cards not discarded\n");
+    }
     r = initializeGame(numPlayer, k, seed, &G);
 
     G.hand[0][0] = minion;
@@ -121,6 +128,9 @@ int main() {
     assert(G.hand[1][1] == estate);
 
     //test p2 has 5 cards
+    if (NOISY_TEST) {
+        printf("Testing discard user cards, 2nd player cards discarded\n");
+    }
     r = initializeGame(numPlayer, k, seed, &G);
 
     G.hand[0][0] = minion;
@@ -144,5 +154,7 @@ int main() {
 
 
     assert(G.handCount[1] == 4);
+
+    printf("All minion tests pass!\n");
     return 0;
 }
