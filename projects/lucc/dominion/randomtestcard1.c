@@ -70,9 +70,6 @@ int main()
                  remodel, smithy, village, baron, great_hall};
 
     struct gameState G;
-    printf("Testing baronCard.\n");
-
-    printf("RANDOM TESTS.\n");
 
     SelectStream(2);
     PutSeed(3);
@@ -102,8 +99,6 @@ int main()
         }
         checkBaronCard(p, &G);
     }
-
-    printf("ALL TESTS OK\n");
 
     exit(0);
 

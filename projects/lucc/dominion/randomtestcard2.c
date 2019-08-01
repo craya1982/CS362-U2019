@@ -52,9 +52,6 @@ int main()
                  remodel, smithy, village, baron, great_hall};
 
     struct gameState G;
-    printf("Testing minionCard.\n");
-
-    printf("RANDOM TESTS.\n");
 
     SelectStream(2);
     PutSeed(3);
@@ -100,8 +97,6 @@ int main()
         G.playedCardCount = 0;
         checkMinionCard(p, &G);
     }
-
-    printf("ALL TESTS OK\n");
 
     exit(0);
 
