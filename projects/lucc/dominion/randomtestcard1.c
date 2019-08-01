@@ -5,7 +5,7 @@
 #include "rngs.h"
 
 #define DEBUG 0
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 void assert(int value)
 {

@@ -44,11 +44,11 @@ randomtestcard2.o: dominion.o
 randomtestcard3.o: dominion.o
 	gcc -o randomtestcard3.o randomtestcard3.c -g dominion.o rngs.o $(CFLAGS)
 
-randomtestresults: randomtestcard1.o #randomtestcard2.o randomtestcard3.o
+randomtestresults: randomtestcard1.o randomtestcard2.o #randomtestcard3.o
 	./randomtestcard1.o >> randomtestresults.out
-	#./randomtestcard2.o >> randomtestresults.out
+	./randomtestcard2.o >> randomtestresults.out
 	#./randomtestcard3.o >> randomtestresults.out
-	gcov dominion.c -b >> randomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
 	cat dominion.c.gcov >> randomtestresults.out
 
 clean:
