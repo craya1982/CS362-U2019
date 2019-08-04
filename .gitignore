@@ -105,6 +105,8 @@ REVISION
 /isl*
 .vscode/ipch/e8a4945c8ee136ca/mmap_address.bin
 .vscode/ipch/e8a4945c8ee136ca/dominion.ipch
+projects/lucc/dominion/playdom
+projects/lucc/dominion/player
 projects/lucc/dominion/unittest1
 projects/lucc/dominion/unittest2
 projects/lucc/dominion/unittest3
