@@ -45,22 +45,22 @@ int main() {
     if (NOISY_TEST) {
         printf("3 Cards (invalid) ");
     }
-    assert(ambassadorCard(3, 1, 0, 0, &G) == -1);
-    
+    assert(cardEffect_Ambassador(0, 1, 3, &G, 0) == -1);
+
     if (NOISY_TEST) {
         printf("-1 Cards (invalid) ");
     }
-    assert(ambassadorCard(-1, 1, 0, 0, &G) == -1);
+    assert(cardEffect_Ambassador(0, 1, -1, &G, 0) == -1);
     
     if (NOISY_TEST) {
         printf("0 Cards (valid) ");
     }
-    assert(ambassadorCard(0, 1, 0, 0, &G) != -1);
+    assert(cardEffect_Ambassador(0, 1, 0, &G, 0) != -1);
     
     if (NOISY_TEST) {
         printf("2 Cards (valid) ");
     }
-    assert(ambassadorCard(2, 1, 0, 0, &G) != -1);
+    assert(cardEffect_Ambassador(0, 1, 2, &G, 0) != -1);
 
    //Test selected card to discard is the hand position doesnt execute
     if (NOISY_TEST) {
@@ -69,7 +69,7 @@ int main() {
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
     G.numActions = 0;
-    assert(ambassadorCard(2, 1, 0, 1, &G) == -1);
+    assert(cardEffect_Ambassador(0, 1, 1, &G, 1) == -1);
 
 
     //Test 2 cards to discard, hand has 2 cards, one of which is ambassador card -- should return -1
@@ -82,7 +82,7 @@ int main() {
     G.hand[0][0] = estate;
     G.hand[0][1] = ambassador;
     G.handCount[0] = 2;
-    assert(ambassadorCard(2, 0, 0, 1, &G) == -1);
+    assert(cardEffect_Ambassador(0, 0, 2, &G, 1) == -1);
 
     //Test supply count is increased
     if (NOISY_TEST) {
@@ -96,7 +96,7 @@ int main() {
     G.hand[0][2] = ambassador;
     G.handCount[0] = 3;
     G.supplyCount[estate] = 0;
-    ambassadorCard(2, 0, 0, 2, &G);
+    cardEffect_Ambassador(0, 0, 2, &G, 2);
 
     assert(G.supplyCount[estate] == 2);
 
@@ -112,7 +112,7 @@ int main() {
     G.hand[0][2] = ambassador;
     G.handCount[0] = 3;
     G.playedCardCount = 0;
-    ambassadorCard(2, 0, 0, 2, &G);
+    cardEffect_Ambassador(0, 0, 2, &G, 2);
 
     assert(G.playedCardCount == 1);
 
