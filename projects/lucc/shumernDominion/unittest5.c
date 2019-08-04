@@ -45,13 +45,13 @@ int main() {
     G.hand[0][2] = mine;
     G.handCount[0] = 3;
     G.playedCardCount = 0;
-    assert(mineCard(0, &G, 0, treasure_map, 2) == -1);
-    assert(mineCard(0, &G, 1, treasure_map, 2) == -1);
+    assert(cardEffect_Mine(0, 0, treasure_map, &G, 2) == -1);
+    assert(cardEffect_Mine(0, 1, treasure_map, &G, 2) == -1);
 
     G.hand[0][0] = copper;
 
-    assert(mineCard(0, &G, 0, estate, 2) == -1);
-    assert(mineCard(0, &G, 1, -1, 2) == -1);
+    assert(cardEffect_Mine(0, 0, estate, &G, 2) == -1);
+    assert(cardEffect_Mine(0, 1, -1, &G, 2) == -1);
 
     if (NOISY_TEST) {
         printf("Testing gain treasure map\n");
@@ -64,7 +64,7 @@ int main() {
     G.handCount[0] = 3;
     G.playedCardCount = 0;
 
-    mineCard(0, &G, 0, treasure_map, 2);
+    cardEffect_Mine(0, 0, treasure_map, &G, 2);
 
     assert(G.hand[0][1] == treasure_map);
 

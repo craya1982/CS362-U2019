@@ -63,7 +63,7 @@ unittestresults: unittest1.o unittest2.o unittest3.o unittest4.o unittest5.o car
 	./unittest1 >> unittestresults.out
 	./unittest2 >> unittestresults.out
 	./unittest3 >> unittestresults.out
-	./unittest4 >> unittestresults.out
+	#./unittest4 >> unittestresults.out
 	./unittest5 >> unittestresults.out
 	./cardtest1 >> unittestresults.out
 	./cardtest2 >> unittestresults.out
