@@ -41,7 +41,7 @@ int main() {
     r = initializeGame(numPlayer, k, seed, &G);
     G.supplyCount[estate] = 1;
     G.handCount[0] = 1;
-    handleBaronGainEstate(&G, 0);
+    cardEffect_Baron_GainEstate(0, &G);
 #if (NOISY_TEST == 1)
     printf("Expected supply count value: 0\n");
 #endif
@@ -60,7 +60,7 @@ int main() {
     r = initializeGame(numPlayer, k, seed, &G);
     G.supplyCount[estate] = 0;
     G.handCount[0] = 1;
-    handleBaronGainEstate(&G, 0);
+    cardEffect_Baron_GainEstate(0, &G);
 
 #if (NOISY_TEST == 1)
     printf("Expected value: 0\n");
@@ -79,7 +79,7 @@ int main() {
     r = initializeGame(numPlayer, k, seed, &G);
     G.supplyCount[estate] = 5;
     G.handCount[0] = 1;
-    handleBaronGainEstate(&G, 0);
+    cardEffect_Baron_GainEstate(0, &G);
 #if (NOISY_TEST == 1)
     printf("Expected value: 4\n");
 #endif
@@ -107,7 +107,7 @@ int main() {
     G.supplyCount[estate] = 1;
     G.handCount[0] = 1;
     G.numBuys = 0;
-    baronCard(&G, 0, 0);
+    cardEffect_Baron(0, 0, &G);
 #if (NOISY_TEST == 1)
     printf("Expected supply count value: 0\n");
 #endif
@@ -133,7 +133,7 @@ int main() {
     G.handCount[0] = 0;
     G.numBuys = 0;
 
-    baronCard(&G, 1, 0);
+    cardEffect_Baron(0, 1, &G);
 #if (NOISY_TEST == 1)
     printf("Expected supply count value: 1\n");
 #endif
@@ -162,7 +162,7 @@ int main() {
     G.numBuys = 0;
     G.coins = 0;
 
-    baronCard(&G, 1, 0);
+    cardEffect_Baron(0, 1, &G);
 #if (NOISY_TEST == 1)
     printf("Expected supply count value: 0\n");
 #endif

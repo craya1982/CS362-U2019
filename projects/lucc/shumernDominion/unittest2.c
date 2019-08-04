@@ -41,31 +41,31 @@ int main() {
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
     G.numActions = 0;
-    minionCard(0, 0, 0, &G);
+    cardEffect_Minion(0, 0, 1, &G, 0);
     assert(G.numActions == 1);
     
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
     G.numActions = 0;
-    minionCard(1, 0, 0, &G);
+    cardEffect_Minion(0, 0, 1, &G, 1);
     assert(G.numActions == 1);
     
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
     G.numActions = 0;
-    minionCard(0, 0, 1, &G);
+    cardEffect_Minion(0, 0, 1, &G, 0);
     assert(G.numActions == 1);
     
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
     G.numActions = 0;
-    minionCard(0, 1, 1, &G);
+    cardEffect_Minion(1, 1, 0, &G, 0);
     assert(G.numActions == 1);
     
     memset(&G, 23, sizeof(struct gameState));   // clear the game state
     r = initializeGame(numPlayer, k, seed, &G);
     G.numActions = 0;
-    minionCard(1, 1, 1, &G);
+    cardEffect_Minion(1, 1, 0, &G, 1);
     assert(G.numActions == 1);
     //test position discarded from hand
     if (NOISY_TEST) {
@@ -77,7 +77,7 @@ int main() {
     G.hand[0][0] = minion;
     G.hand[0][1] = estate;
 
-    minionCard(0, 0, 0, &G);
+    cardEffect_Minion(0, 1, 0, &G, 0);
     assert(G.hand[0][0] != minion);
 
 
@@ -93,7 +93,7 @@ int main() {
     G.handCount[0] = 2;
     int coins = G.coins;
 
-    minionCard(0, 0, 1, &G);
+    cardEffect_Minion(0, 1, 0, &G, 0);
     assert(G.hand[0][0] != minion);
     assert(G.handCount[0] == 1);
     assert(G.hand[0][0] == estate);
@@ -118,7 +118,7 @@ int main() {
 
     coins = G.coins;
 
-    minionCard(0, 0, 0, &G);
+    cardEffect_Minion(0, 0, 1, &G, 0);
     assert(G.handCount[0] == 4);
     assert(G.coins == coins);
 
@@ -148,7 +148,7 @@ int main() {
 
     coins = G.coins;
 
-    minionCard(0, 0, 0, &G);
+    cardEffect_Minion(0, 0, 1, &G, 0);
     assert(G.handCount[0] == 4);
     assert(G.coins == coins);
 
