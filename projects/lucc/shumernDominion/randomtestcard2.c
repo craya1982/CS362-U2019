@@ -22,9 +22,11 @@ int checkMinionCard(int p, struct gameState *post)
     memcpy(&pre, post, sizeof(struct gameState));
     
     int chooseCoinsCard = floor(Random() * 1.9); //0-0.9 false, 1-1.9 true
+    int otherChoice = chooseCoinsCard == 0 ? 1 : 0;
+
     int otherPlayer = p == 0 ? 1 : 0;
 
-    minionCard(0, p, chooseCoinsCard, post);
+    cardEffect_Minion(p, chooseCoinsCard, otherChoice, post, 0);
 
     assert(pre.numActions == (post->numActions - 1 ));
     if (chooseCoinsCard == 0){

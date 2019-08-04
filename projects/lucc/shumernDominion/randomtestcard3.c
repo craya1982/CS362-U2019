@@ -24,7 +24,7 @@ int checkTributeCard(int p, struct gameState *post)
     int chooseCoinsCard = floor(Random() * 1.9); //0-0.9 false, 1-1.9 true
     int otherPlayer = p == 0 ? 1 : 0;
 
-    tributeCard(post, otherPlayer, p);
+    cardEffect_Tribute(p, otherPlayer, post);
 }
 
 int main()

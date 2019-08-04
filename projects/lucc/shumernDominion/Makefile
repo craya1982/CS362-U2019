@@ -59,7 +59,7 @@ cardtest4.o: dominion.o
 cardtest5.o: dominion.o
 	gcc -o cardtest5 cardtest5.c -g dominion.o rngs.o $(CFLAGS)
 
-unittestresults: unittest1.o unittest2.o unittest3.o unittest4.o unittest5.o cardtest1.o cardtest2.o cardtest3.o cardtest4.o cardtest5.o
+unittestresults: unittest1.o unittest2.o unittest3.o unittest5.o cardtest1.o cardtest2.o cardtest3.o cardtest4.o cardtest5.o randomtestcard1.o randomtestcard2.o randomtestcard3.o
 	./unittest1 >> unittestresults.out
 	./unittest2 >> unittestresults.out
 	./unittest3 >> unittestresults.out
@@ -70,7 +70,10 @@ unittestresults: unittest1.o unittest2.o unittest3.o unittest4.o unittest5.o car
 	./cardtest3 >> unittestresults.out
 	./cardtest4 >> unittestresults.out
 	./cardtest5 >> unittestresults.out
-	gcov dominion.c -b >> unittestresults.out
+	./randomtestcard1.o >> randomtestresults.out
+	./randomtestcard2.o >> randomtestresults.out
+	./randomtestcard3.o >> randomtestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 
 player: player.c interface.o

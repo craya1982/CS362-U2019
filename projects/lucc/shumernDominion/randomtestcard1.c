@@ -34,7 +34,7 @@ int checkBaronCard(int p, struct gameState *post)
 
     //int baronCard(struct gameState *state, int discardEstateFlag, int currentPlayer)
     int discardEstate = floor(Random() * 1.9); //0-0.9 false, 1-1.9 true
-    baronCard(post, discardEstate, p);
+    cardEffect_Baron(p, discardEstate, post);
     
     assert(pre.numBuys == (post->numBuys + 1));
 
